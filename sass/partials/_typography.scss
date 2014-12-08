@@ -1,0 +1,57 @@
+/* ========================
+    $TYPOGRAPHY.SCSS
+   ======================== */
+/**
+ * Typographic styles.
+ *
+ * Only for changing appearance of typography. No layouts.
+ */
+
+
+
+
+
+/* ========================
+    $BASE
+   ======================== */
+html {
+  color:       #222;
+  font-family: 'Source Sans Pro', 'Arial', sans-serif;
+  text-align:  center;
+}
+
+
+
+
+
+/* ========================
+    $HEADINGS
+   ======================== */
+.h {
+  font-family: 'Damion', 'Source Sans Pro', 'Arial', sans-serif;
+}
+
+.h--sitetitle {
+  margin: 1rem 0 0;
+}
+
+
+.h--sub {
+  margin: 0;
+
+  font-family: 'Source Sans Pro', 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+
+
+
+
+/* ========================
+    $ARTICLES
+   ======================== */
+article {
+  text-align: left;
+}

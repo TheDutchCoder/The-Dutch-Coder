@@ -2,7 +2,23 @@
 @import 'partials/normalize';
 @import 'partials/boilerplate';
 
-html {
-  color: #222;
-  transform: translateY(10px);
+@import 'partials/typography';
+
+.header {
+  padding: 2rem 0;
 }
+
+.header--global {
+  color: $white;
+  
+  background: linear-gradient(135deg, $color-two, $color-one);
+}
+
+.logo {
+  display: inline-block;
+}
+
+  .logo__img {
+    width: 100px;
+    height: auto;
+  }
