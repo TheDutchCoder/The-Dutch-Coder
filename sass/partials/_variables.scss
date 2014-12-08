@@ -1,3 +1,80 @@
-$color-one: #2aab87;
-$color-two: #0f7987;
-$white: #fff;
+/* ========================
+    $TYPOGRAPHY
+   ======================== */
+/**
+ * Font weights.
+ */
+$light:   100;
+$regular: 400;
+$bold:    600;
+
+
+
+/**
+ * Base font settings.
+ *
+ * The main font settings used throughout the document.
+ */
+$font-color:       #222;
+$font-color-alt:   #fff;
+$font-family:      "Source Sans Pro", "Arial", sans-serif;
+$font-weight:      $regular;
+$font-size:        18px;
+$font-line-height: 1.4;
+
+
+
+/**
+ * Heading font settings.
+ *
+ * Separate settings for headings.
+ */
+$heading-font-color:       $font-color;
+$heading-font-family:      "Lato", $font-family;
+$heading-font-weight:      $bold;
+$heading-font-line-height: 1.2;
+
+
+
+
+
+/*------------------------------------*\
+    $COLORS
+\*------------------------------------*/
+/**
+ * Branding colors.
+ * 
+ * Expand with additional variables if needed.
+ */
+$primary-color:   #2aab87;
+$secondary-color: #0f7987;
+$tertiary-color:  #222;
+$alt-color:       #eee;
+
+$ui-color:        #ccc; // For things like borders.
+
+
+
+
+
+/* ========================
+    $TRANSITIONS
+   ======================== */
+/**
+ * Transition settings.
+ *
+ * If transitions are used on a global level, define them here.
+ */
+
+
+
+
+
+/* ========================
+    $OBJECTS
+   ======================== */
+/**
+ * Enable objects you want to use in this project.
+ */
+$use-nav:   true !default;
+$use-btn:   true !default;

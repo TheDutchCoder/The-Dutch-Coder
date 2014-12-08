@@ -1,0 +1,294 @@
+@if ($use-btn == true) {
+
+/* =================================
+    $BTN.SCSS
+   ================================= */
+/**
+ * The button object.
+ *
+ * Displays an element as if it was a button.
+ * Best used for `button`, `input`, and `a` elements.
+ */
+
+
+// Options
+$disable-focus:   false;
+$has-text-shadow: false;
+
+
+// General settings
+$padding: 10px 2em;
+
+$font-color:      #222;
+$bg-color:        #eee;
+$bg-color-hover:  darken($bg-color, 5%);
+$bg-color-active: darken($bg-color, 10%);
+
+
+
+
+
+/* $BASE
+   ================================= */
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+
+  margin: 0;
+  padding: $padding;
+
+  border: 1px solid transparent;
+  border-radius: 3px;
+
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+
+  /* States */
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $font-color;
+    text-decoration: none;
+    @if $has-text-shadow == true {
+      text-shadow: 0 1px 0 if((lightness($bg-color) > 50) ,rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.3));
+    }
+  }
+
+  &,
+  &:link,
+  &:visited {
+    background-color: $bg-color;
+  }
+
+  &:hover,
+  &:focus,
+  &.is-hovered,
+  &.is-focused {
+    @if $disable-focus == true {
+      outline: none;
+    }
+    background-color: $bg-color-hover;
+  }
+
+  &:active,
+  &.is-active {
+    background-color: $bg-color-active;
+  }
+
+}
+
+
+
+
+
+/* $VARIATIONS
+   ================================= */
+/**
+ * Alternative button styling.
+ *
+ * Can be used for e.g. cancel buttons.
+ */
+.btn--alt {
+
+  $font-color:      $font-color-alt;
+  $bg-color:        #222;
+  $bg-color-hover:  lighten($bg-color, 5%);
+  $bg-color-active: lighten($bg-color, 10%);
+
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $font-color;
+  }
+
+  &,
+  &:link,
+  &:visited {
+    background-color: $bg-color;
+  }
+
+  &:hover,
+  &:focus,
+  &.is-hovered,
+  &.is-focused {
+    background-color: $bg-color-hover;
+  }
+
+  &:active,
+  &.is-active {
+    background-color: $bg-color-active;
+  }
+
+}
+
+
+
+/**
+ * Primary buttons.
+ *
+ * Used for actionable buttons, or buttons that stand out.
+ */
+.btn--primary {
+
+  $font-color:      $font-color-alt;
+  $bg-color:        $primary-color;
+  $bg-color-hover:  darken($bg-color, 5%);
+  $bg-color-active: darken($bg-color, 10%);
+
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $font-color;
+  }
+
+  &,
+  &:link,
+  &:visited {
+    background-color: $bg-color;
+  }
+
+  &:hover,
+  &:focus,
+  &.is-hovered,
+  &.is-focused {
+    background-color: $bg-color-hover;
+  }
+
+  &:active,
+  &.is-active {
+    background-color: $bg-color-active;
+  }
+  
+}
+
+
+
+/**
+ * Hamburger menu.
+ *
+ * Mainly used for mobile navigation
+ */
+.btn--hamburger {
+  padding: 0.5em 1em;
+  border-radius: 0;
+
+  text-transform: uppercase;
+
+  background-color: transparent;
+
+  /* The bars */
+  .btn__bar {
+    position: relative;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    width: 20px;
+    height: 2px;
+
+    margin-top: -2px;
+    margin-left: 0.5em;
+
+    &,
+    &::before,
+    &::after {
+      background-color: #fff;
+
+      @include transition((background-color, transform), 0.15s, ease);
+    }
+
+    &::before,
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    &::before {
+      transform: translateY(-6px);
+    }
+
+    &::after {
+      transform: translateY(6px);
+    }
+
+  }
+
+  /* States */
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    color: $font-color-alt;
+
+    @include transition((background-color, transform), 0.15s, ease);
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.is-active {
+    color: lighten($primary-color, 25%);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover .btn__bar,
+  &:hover .btn__bar::before,
+  &:hover .btn__bar::after,
+  &:focus .btn__bar,
+  &:focus .btn__bar::before,
+  &:focus .btn__bar::after,
+  &:active .btn__bar,
+  &:active .btn__bar::before,
+  &:active .btn__bar::after,
+  &.is-active .btn__bar,
+  &.is-active .btn__bar::before,
+  &.is-active .btn__bar::after {
+    background-color: lighten($primary-color, 25%);
+  }
+
+  &:active .btn__bar,
+  &.is-active .btn__bar {
+    background-color: transparent;
+  }
+
+  &:active .btn__bar::before,
+  &.is-active .btn__bar::before {
+    transform: rotate(45deg);
+  }
+
+  &:active .btn__bar::after,
+  &.is-active .btn__bar::after {
+    transform: rotate(-45deg);
+  }
+
+}
+
+
+
+/**
+ * Full width buttons.
+ */
+.btn--full {
+  width: 100%;
+}
+
+} //endif
