@@ -1,18 +1,30 @@
 @import 'partials/variables';
+@import 'partials/mixins';
 @import 'partials/normalize';
 @import 'partials/boilerplate';
 
 @import 'partials/typography';
 
+@import 'objects/btn';
+@import 'objects/nav';
+
 .header {
-  padding: 2rem 0;
+  position: relative;
+  padding: 4rem 0;
 }
 
 .header--global {
-  color: $white;
-  
-  background: linear-gradient(135deg, $color-two, $color-one);
+  color: $font-color;
+
+  background: linear-gradient(135deg, $secondary-color, $primary-color);
+
+  & .btn--hamburger {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
 }
+
 
 .logo {
   display: inline-block;

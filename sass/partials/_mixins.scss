@@ -1,0 +1,44 @@
+/* ========================
+    $MIXINS.SCSS
+   ======================== */
+/**
+ * Include media queries.
+ */
+@mixin mq($media) {
+
+  @if $media == "lap" {
+
+    @media only screen and (min-width: 40em) { @content; }
+
+  }
+
+  @if $media == "desk" {
+
+    @media only screen and (min-width: 60em) { @content; }
+
+  }
+
+}
+
+
+
+
+/**
+ * Font sizes with fallback for older browsers.
+ */
+@mixin font-size($size) {
+
+  font-size: $size;
+  font-size: ($size / $font-size) * 1rem;
+
+}
+
+
+
+/**
+ * Transitions.
+ */
+@mixin transition($properties: all, $duration: 0.2s, $timing: cubic-bezier(.7,0,.3,1), $delay: 0) {
+  transition: all $duration $timing $delay;
+  transition-property: $properties;
+}

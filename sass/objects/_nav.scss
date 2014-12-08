@@ -1,0 +1,94 @@
+@if ($use-nav == true) {
+
+/* =================================
+    $NAV.SCSS
+   ================================= */
+/**
+ * The nav object.
+ *
+ * Used to build navigational lists. Usually with a `ul` element.
+ */
+
+// General settings
+$margin:       0;
+$padding:      0;
+$link-padding: 10px 1em;
+
+
+
+
+
+/* $BASE
+   ================================= */
+/**
+ * The default nav object.
+ *
+ * Displays items stacked.
+ */
+.nav,
+.nav__item,
+.nav__link {
+  display: block;
+  position: relative;
+}
+
+.nav {  
+  margin: $margin;
+  padding: $padding;
+
+  list-style-type: none;
+}
+
+  .nav__item,
+  .nav__link {
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .nav__item {
+    @include mq("lap") {
+      display: inline-block;
+    }
+  }
+
+  .nav__link {
+    padding: $link-padding;
+  }
+
+
+
+
+
+/* $VARIATIONS
+   ================================= */
+/**
+ * Inline navigations (e.g. breadcrumbs).
+ *
+ * Displays items side-by-side.
+ */
+.nav--inline {
+
+  .nav__item {
+    display: inline-block;
+  }
+
+}
+
+
+
+/**
+ * Sub navigations (e.g. drop-down menus).
+ *
+ * Displays items stacked.
+ */
+.nav--sub {
+  position: relative;
+  
+  @include mq("lap") {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+} //endif
