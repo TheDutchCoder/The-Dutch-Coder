@@ -1,36 +1,30 @@
-@import 'partials/variables';
-@import 'partials/mixins';
-@import 'partials/normalize';
-@import 'partials/boilerplate';
-
-@import 'partials/typography';
-
-@import 'objects/btn';
-@import 'objects/nav';
-
-.header {
-  position: relative;
-  padding: 4rem 0;
-}
-
-.header--global {
-  color: $font-color;
-
-  background: linear-gradient(135deg, $secondary-color, $primary-color);
-
-  & .btn--hamburger {
-    position: absolute;
-    top: 1em;
-    right: 1em;
-  }
-}
+/* --------------------------------- *
+ * $STYLE.SCSS                       *
+ * --------------------------------- */
+/**
+ * SASS variables.
+ */
+$use-nav:  true;
+$use-btn:  true;
+$use-logo: true;
 
 
-.logo {
-  display: inline-block;
-}
 
-  .logo__img {
-    width: 100px;
-    height: auto;
-  }
+/**
+ * Import all SASS project files.
+ */
+@import 'setup';
+
+
+
+/**
+ * Import the global header.
+ */
+@import 'header';
+
+
+
+/**
+ * Import the global footer.
+ */
+@import 'footer';
