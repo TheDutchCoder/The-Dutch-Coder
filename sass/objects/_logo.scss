@@ -1,0 +1,21 @@
+@if $use-logo == true {
+/* --------------------------------- *
+ * $LOGO.SCSS                        *
+ * --------------------------------- */
+/**
+ * Logo object.
+ *
+ * Can be used wrapped in a link or stand-alone.
+ */
+.logo {
+  display: inline-block;
+}
+
+  .logo__img {
+    width: 100px;
+    height: auto;
+  }
+
+
+
+}

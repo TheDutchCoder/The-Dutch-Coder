@@ -1,6 +1,6 @@
-/* ========================
-    $TYPOGRAPHY
-   ======================== */
+/* --------------------------------- *
+ * $TYPOGRAPHY                       *
+ * --------------------------------- */
 /**
  * Font weights.
  */
@@ -38,9 +38,9 @@ $heading-font-line-height: 1.2;
 
 
 
-/*------------------------------------*\
-    $COLORS
-\*------------------------------------*/
+/* --------------------------------- *
+ * $COLORS                           *
+ * --------------------------------- */
 /**
  * Branding colors.
  * 
@@ -57,24 +57,33 @@ $ui-color:        #ccc; // For things like borders.
 
 
 
-/* ========================
-    $TRANSITIONS
-   ======================== */
+/* --------------------------------- *
+ * $TRANSITIONS                      *
+ * --------------------------------- */
 /**
  * Transition settings.
  *
  * If transitions are used on a global level, define them here.
  */
+$transition: all 0.4s cubic-bezier(.3,0,.7,1);
 
 
 
 
 
-/* ========================
-    $OBJECTS
-   ======================== */
+/* --------------------------------- *
+ * $GLOBAL VARIABLES                 *
+ * --------------------------------- */
 /**
- * Enable objects you want to use in this project.
+ * Objects that will be imported.
  */
-$use-nav:   true !default;
-$use-btn:   true !default;
+$use-nav:   false !default;
+$use-btn:   false !default;
+$use-logo:  false !default;
+
+
+
+/**
+ * Enable to output an IE8 stylesheet.
+ */
+$no-mq:     false !default;

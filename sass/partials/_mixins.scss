@@ -6,16 +6,13 @@
  */
 @mixin mq($media) {
 
-  @if $media == "lap" {
-
-    @media only screen and (min-width: 40em) { @content; }
-
-  }
-
-  @if $media == "desk" {
-
-    @media only screen and (min-width: 60em) { @content; }
-
+  @if $no-mq == true { @content; }
+  @else {
+  
+    @if $media == "lap" { @media only screen and (min-width: 40em) { @content; } }
+    @if $media == "desk" { @media only screen and (min-width: 60em) { @content; } }
+    @if $media == "wide" { @media only screen and (min-width: 70em) { @content; } }
+  
   }
 
 }

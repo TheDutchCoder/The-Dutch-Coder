@@ -1,0 +1,21 @@
+/* --------------------------------- *
+ * $HEADER.SCSS                      *
+ * --------------------------------- */
+/**
+ * The global header.
+ */
+.header--global {
+  padding: 4rem 0;
+
+  color: $font-color;
+
+  background: linear-gradient(135deg, $secondary-color, $primary-color);
+
+  & .btn--hamburger {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+    padding: 0.5em;
+  }
+}
