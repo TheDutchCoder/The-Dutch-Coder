@@ -1,0 +1,26 @@
+/**
+ * _logo.scss
+ * 
+ * Displays a(n) (SVG) logo.
+ *
+ * Width and heigth should be defined to avoid scaling issues.
+ */
+
+
+
+$ratio: .36;
+$width: 100px;
+
+
+
+.logo {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+  .logo__img {
+    display: block;
+
+    width: $width;
+    height: $width * $ratio;
+  }

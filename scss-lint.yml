@@ -1,0 +1,44 @@
+# Custom scss lint configuration for Soshal
+
+scss_files: "**/*.scss"
+plugin_directories: ['.scss-linters']
+
+# List of gem names to load custom linters from (make sure they are already
+# installed)
+plugin_gems: []
+
+linters:
+
+  Indentation:
+    enabled: false
+    allow_non_nested_indentation: false
+    character: space # or 'tab'
+    width: 2
+
+  NameFormat:
+    enabled: true
+    allow_leading_underscore: true
+    convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
+
+  PropertySortOrder:
+    enabled: false
+    ignore_unspecified: false
+    min_properties: 2
+    separate_groups: false
+
+  QualifyingElement:
+    enabled: true
+    allow_element_with_attribute: true
+    allow_element_with_class: false
+    allow_element_with_id: false
+
+  SelectorFormat:
+    enabled: true
+    convention: hyphenated_BEM # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+
+  SingleLinePerSelector:
+    enabled: false
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: at_least_one_space # or 'no_space', or 'at_least_one_space', or 'aligned'

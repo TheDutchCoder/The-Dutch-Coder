@@ -1,0 +1,285 @@
+/**
+ * _grid.scss
+ * 
+ * The grid object.
+ *
+ * Lays out items in a responsive grid. Adjust the numerators and denomenators
+ * to your liking. It's a good idea to strip out sizes you will certainly not
+ * need in your project, to avoid bloat.
+ *
+ * Enable push and pull generation if you need to push/pull cells.
+ */
+
+
+
+$grid-spacing:      $padding;
+$grid-numerators:   (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+$grid-denomenators: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+$grid-push: false;
+$grid-pull: false;
+
+
+
+.grid {
+  position: relative;
+  display: block;
+
+  list-style-type: none;
+
+  margin: 0 0 0 ($grid-spacing * -1);
+  padding: 0;
+}
+
+  .grid__item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0 0 0 $grid-spacing;
+  }
+
+
+
+// Unpadded grid.
+.grid--unpadded {
+  margin-left: 0;
+
+  .grid__item {
+    padding-left: 0;
+  }
+}
+
+
+
+// Grid alignments.
+.grid__item--middle {
+  vertical-align: middle;
+}
+
+.grid__item--bottom {
+  vertical-align: bottom;
+}
+
+
+
+// Grid sizes.
+// 
+// Loop through all the user defined media queries to build the grid widths.
+@each $name, $media in $media-queries {
+
+  $widths: ();
+  $placeholders: ();
+  $placeholders-push: ();
+  $placeholders-pull: ();
+
+  // An empty media query means it's the default (usually mobile), so the
+  // content doesn't need to be wrapped in a media query.
+  @if ($media == '') {
+
+    .#{$name}-hide {
+      display: none;
+    }
+
+    .#{$name}-show {
+      display: inline-block;
+    }
+
+    @if ($grid-push) {
+
+      .#{$name}-push-reset {
+        left: auto;
+      }
+
+    }
+
+    @if ($grid-pull) {
+
+      .#{$name}-pull-reset {
+        left: auto;
+      }
+
+    }
+
+  } @else {
+
+    @media #{$media} {
+      .#{$name}-hide {
+        display: none;
+      }
+
+      .#{$name}-show {
+        display: inline-block;
+      }
+
+      @if ($grid-push) {
+
+        .#{$name}-push-reset {
+          left: auto;
+        }
+
+      }
+
+      @if ($grid-pull) {
+
+        .#{$name}-pull-reset {
+          left: auto;
+        }
+
+      }
+
+    }
+
+  }
+
+  @each $numerator in $grid-numerators {
+
+    @each $denominator in $grid-denomenators {
+
+      @if ($numerator <= $denominator) {
+
+        $fraction: $numerator / $denominator;
+        $index: index($widths, $fraction);
+
+        // The width hasn't been stored yet for this media query, so we add the
+        // width to the list and create a new placeholder.
+        // 
+        // Otherwise this width already exists and we should extend a previously
+        // stored placeholder.
+        // 
+        // Because placeholders are stored in their respective media queries, we
+        // only have to extend the placeholder and the result will end up in the
+        // correct media query.
+        @if ($index == null) {
+
+          $widths: append($widths, $fraction);
+          $placeholder: '%' + $name + '-' + $numerator + '-' + $denominator;
+          $placeholder-push: '%' + $name + '-push-' + $numerator + '-' + $denominator;
+          $placeholder-pull: '%' + $name + '-pull-' + $numerator + '-' + $denominator;
+          $placeholders: append($placeholders, $placeholder);
+          $placeholders-push: append($placeholders-push, $placeholder-push);
+          $placeholders-pull: append($placeholders-pull, $placeholder-pull);
+
+          // If there's no media query, make a placeholder in the 'root' and
+          // extend it. Otherwise, create the placeholder in the media query and
+          // extend it.
+          @if ($media == '') {
+
+            // The placeholder in the root.
+            %#{$name}-#{$numerator}-#{$denominator} {
+              width: $fraction * 100%;
+            }
+
+            // Extend the placeholder.
+            .#{$name}-#{$numerator}-#{$denominator} {
+              @extend %#{$name}-#{$numerator}-#{$denominator};
+            }
+
+            @if ($grid-push) {
+
+              // The push placeholder in the root.
+              %#{$name}-push-#{$numerator}-#{$denominator} {
+                left: $fraction * 100%;
+              }
+
+              // Extend the push placeholder.
+              .#{$name}-push-#{$numerator}-#{$denominator} {
+                @extend %#{$name}-push-#{$numerator}-#{$denominator};
+              }
+
+            }
+
+            @if ($grid-pull) {
+
+              // The pull placeholder in the root.
+              %#{$name}-pull-#{$numerator}-#{$denominator} {
+                left: $fraction * -100%;
+              }
+
+              // Extend the pull placeholder.
+              .#{$name}-pull-#{$numerator}-#{$denominator} {
+                @extend %#{$name}-pull-#{$numerator}-#{$denominator};
+              }
+
+            }
+
+          } @else {
+
+            // The placeholder in a media query.
+            @media #{$media} {
+              %#{$name}-#{$numerator}-#{$denominator} {
+                width: $fraction * 100%;
+              }
+
+              // Extend the placeholder.
+              .#{$name}-#{$numerator}-#{$denominator} {
+                @extend %#{$name}-#{$numerator}-#{$denominator};
+              }
+
+              // Include push cells.
+              @if ($grid-push) {
+
+                %#{$name}-push-#{$numerator}-#{$denominator} {
+                  left: $fraction * 100%;
+                }
+
+                .#{$name}-push-#{$numerator}-#{$denominator} {
+                  @extend %#{$name}-push-#{$numerator}-#{$denominator};
+                }
+
+              }
+
+              // Include pull cells.
+              @if ($grid-pull) {
+
+                %#{$name}-pull-#{$numerator}-#{$denominator} {
+                  left: $fraction * -100%;
+                }
+
+                .#{$name}-pull-#{$numerator}-#{$denominator} {
+                  @extend %#{$name}-pull-#{$numerator}-#{$denominator};
+                }
+
+              }
+
+            }
+
+          }
+
+        } @else {
+
+          // Extend the placeholder.
+          .#{$name}-#{$numerator}-#{$denominator} {
+            @extend #{nth($placeholders, $index)};
+          }
+
+          @if ($grid-push) {
+
+            // Extend the placeholder.
+            .#{$name}-push-#{$numerator}-#{$denominator} {
+              @extend #{nth($placeholders-push, $index)};
+            }
+
+          }
+
+          @if ($grid-pull) {
+
+            // Extend the placeholder.
+            .#{$name}-pull-#{$numerator}-#{$denominator} {
+              @extend #{nth($placeholders-pull, $index)};
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}

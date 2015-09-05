@@ -1,0 +1,40 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+[*.php]
+charset = utf-8
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+[*.html]
+charset = utf-8
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{*.css,*.scss}]
+charset = utf-8
+indent_size = 2
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.js]
+charset = utf-8
+indent_size = 4
+indent_style = space
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[{package.json,.jshintrc}]
+indent_size = 2
+indent_style = space

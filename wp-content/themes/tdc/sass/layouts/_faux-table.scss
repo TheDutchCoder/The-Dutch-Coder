@@ -1,0 +1,25 @@
+/**
+ * _faux-table.scss
+ * 
+ * Displays elements as if they were contained in a table. Makes it easy to
+ * vertically align elements.
+ */
+
+
+
+.f-table {
+  display: table;
+  table-layout: fixed;
+
+  width: 100%;
+  height: 100%;
+}
+
+  .f-table__row {
+    display: table-row;
+  }
+
+    .f-table__cell {
+      display: table-cell;
+      vertical-align: middle;
+    }

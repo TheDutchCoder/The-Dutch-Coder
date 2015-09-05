@@ -1,0 +1,33 @@
+/**
+ * _wrapper.scss
+ * 
+ * The wrapper object.
+ *
+ * Used to wrap elements in a constrained area, usually the max-width of the
+ * page's content.
+ */
+
+
+
+.wrapper {
+  position: relative;
+
+  max-width: 68rem;
+
+  margin: 0 auto;
+  padding: 0 $padding;
+}
+
+
+
+// Padded wrapper.
+.wrapper--padded {
+  padding: $padding;
+}
+
+
+
+// Unpadded wrapper.
+.wrapper--unpadded {
+  padding: 0;
+}

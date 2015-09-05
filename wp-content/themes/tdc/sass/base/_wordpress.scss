@@ -1,0 +1,87 @@
+/**
+ * _wordpress.scss
+ * 
+ * Contains the default WordPress classes and styling.
+ *
+ * WordPress comes with a number of classes/styles that are added by e.g. the
+ * content editor. Feel free to adjust these styles as needed.
+ *
+ * @todo: use proper selectors and remove silly styles.
+ */
+
+
+
+.alignnone {
+  margin: 5px 20px 20px 0;
+}
+
+.aligncenter {
+  display: block;
+
+  margin: 5px auto;
+}
+
+.alignright {
+  float: right;
+
+  margin: 5px 0 20px 20px;
+}
+
+.alignleft {
+  float: left;
+
+  margin: 5px 20px 20px 0;
+}
+
+.wp-caption {
+  max-width: 96%;
+
+  padding: 5px 3px 10px;
+
+  border: 1px solid color(ui, border);
+  
+  text-align: center;
+
+  background: color(ui, background);
+
+  &.alignnone {
+    margin: 5px 20px 20px 0;
+  }
+
+  &.alignleft {
+    margin: 5px 20px 20px 0;
+  }
+
+  &.alignright {
+    margin: 5px 0 20px 20px;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 98.5%;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0 none;  
+  }
+
+  .wp-caption-text {
+    margin: 0;
+    padding: 0 4px 5px;
+
+    font-size: 11px;
+    line-height: 17px;
+  }
+
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+  @extend %visuallyhidden;
+}
+
+.screen-reader-text:focus {
+  @extend %visuallyhidden.focusable:focus;
+}

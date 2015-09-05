@@ -1,0 +1,293 @@
+/**
+ * _mixins.scss
+ *
+ * A collection of mixins that help with e.g. media queries, transitions, etc.
+ */
+
+
+
+/**
+ * Media query mixin.
+ * 
+ * Looks through the user defined map of media queries and outputs the content
+ * in the found query.
+ * 
+ * Can also take a custom query.
+ */
+@mixin mq($breakpoint) {
+  
+  $query: map-get($media-queries, $breakpoint);
+
+  // If no query was found, just output a custom query. An empty query means it
+  // was mapped empty (and used for grids), otherwise it's a mapped query.
+  @if ($query == null) {
+
+    @media #{$breakpoint} {
+      @content;
+    }
+
+  } @else if ($query == '') {
+
+    @content;
+
+  } @else {
+
+    @media #{$query} {
+      @content;
+    }
+
+  }
+
+}
+
+
+
+/**
+ * Transition mixin.
+ * 
+ * Looks through the user defined map of transitions and outputs the transition
+ * if it is found. Otherwise it will output a custom transition.
+ * 
+ * Properties can be specified to limit the transition to specific properties.
+ */
+@mixin transition($name, $properties: '') {
+
+  $transition: map-get($transitions, $name);
+
+  // If no transition was found, just output a custom transition.
+  @if ($transition) {
+
+    transition: #{$transition};
+
+  } @else {
+
+    transition: #{$name};
+
+  }
+
+  // If properties were specified, output them as the transition properties.
+  @if ($properties != '') {
+
+    transition-property: #{$properties};
+
+  }
+
+}
+
+
+
+/**
+ * Size mixin.
+ *
+ * Sets an element's width and height.
+ *
+ * Example:
+ * .element { @include size(160px, 50%); }
+ *
+ * Result:
+ * .element { width: 160px; height: 50%; }
+ */
+@mixin size($width, $height: $width) {
+
+  width: $width;
+  height: $height;
+
+}
+
+
+
+/**
+ * Position mixin.
+ *
+ * Shorthand for positioning elements.
+ *
+ * Example:
+ * .element {
+ *   @include absolute(top 0 left 0);
+ * }
+ *
+ * Result:
+ * .element {
+ *   position: absolute;
+ *   top: 0;
+ *   left: 0;
+ * }
+ */
+@mixin absolute($args) {
+
+  $i: 1;
+  $property: '';
+  $value: 0;
+
+  @each $pos in $args {
+
+    @if ($i % 2 == 1) {
+
+      $property: #{$pos};
+
+    } @else {
+
+      $value: nth($args, $i);
+      #{$property}: #{$value};
+
+    }
+
+    $i: $i + 1;
+
+  }
+
+}
+
+
+
+/**
+ * Arrow mixin.
+ *
+ * Creates a pure CSS arrow, can be positioned on every side of an object.
+ */
+@mixin arrow($pos: 'top', $width: 1em, $color: '#fff') {
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: $width solid transparent;
+
+    @if ($pos == 'topleft') {
+
+      top: (-2 * $width);
+      left: 0;
+      border-bottom-color: $color;
+      border-left-color: $color;
+
+    } @else if ($pos == 'top') {
+
+      top: (-2 * $width);
+      left: 50%;
+      margin-left: (-1 * $width);
+      border-bottom-color: $color;
+
+    } @else if ($pos == 'topright') {
+
+      top: (-2 * $width);
+      right: 0;
+      border-bottom-color: $color;
+      border-right-color: $color;
+
+    } @else if ($pos == 'righttop') {
+
+      top: 0;
+      right: (-2 * $width);
+      border-top-color: $color;
+      border-left-color: $color;
+
+    } @else if ($pos == 'right') {
+
+      top: 50%;
+      right: (-2 * $width);
+      margin-top: (-1 * $width);
+      border-left-color: $color;
+
+    } @else if ($pos == 'rightbottom') {
+
+      bottom: 0;
+      right: (-2 * $width);
+      border-bottom-color: $color;
+      border-left-color: $color;
+
+    } @else if ($pos == 'bottomright') {
+
+      bottom: (-2 * $width);
+      right: 0;
+      border-top-color: $color;
+      border-right-color: $color;
+
+    } @else if ($pos == 'bottom') {
+
+      bottom: (-2 * $width);
+      left: 50%;
+      margin-left: (-1 * $width);
+      border-top-color: $color;
+
+    } @else if ($pos == 'bottomleft') {
+
+      bottom: (-2 * $width);
+      left: 0;
+      border-top-color: $color;
+      border-left-color: $color;
+
+    } @else if ($pos == 'leftbottom') {
+
+      bottom: 0;
+      left: (-2 * $width);
+      border-bottom-color: $color;
+      border-right-color: $color;
+
+    } @else if ($pos == 'left') {
+
+      top: 50%;
+      left: (-2 * $width);
+      margin-top: (-1 * $width);
+      border-right-color: $color;
+
+    } @else if ($pos == 'lefttop') {
+
+      top: 0;
+      left: (-2 * $width);
+      border-top-color: $color;
+      border-right-color: $color;
+
+    }
+
+  }
+
+}
+
+/**
+ * Interaction effect mixin.
+ *
+ * Quickly style the hover, active, and focus states of an element
+ */
+@mixin interact($self: false) {
+
+  @if $self {
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+
+  } @else {
+
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+
+  }
+  
+}
+
+
+/* --------------------------------- *
+ * TESTS                             *
+ * --------------------------------- */
+/**
+ * This mixin displays the current media query name and actual query, so that
+ * you can quickly see in which breakpoint you are.
+ */
+@mixin display-mq() {
+
+  @each $key, $val in $media-queries {
+
+    @if ($val != '') {}
+
+    @media #{$key} {
+      content: '#{$key}: #{$val}';
+    }
+  }
+
+}

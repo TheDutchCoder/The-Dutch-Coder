@@ -1,0 +1,36 @@
+/**
+ * _icon.scss
+ * 
+ * Scalable (SVG) icons.
+ */
+
+
+
+$icon-width:  1em;
+$icon-height: 1em;
+$icon-sizes:  (2, 3, 4);
+
+
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  width: $icon-width;
+  height: $icon-height;
+
+  line-height: 1;
+}
+
+
+
+// Sizes.
+// 
+// Creates different sizes based on the map.
+@each $size in $icon-sizes {
+
+  .icon--x#{$size} {
+    width: $size * $icon-width;
+    height: $size * $icon-height;
+  }
+}

@@ -1,0 +1,49 @@
+/**
+ * _document.scss
+ * 
+ * Contains all default document styling (if applicable).
+ *
+ * This is the place to set-up document-level styling, that can't fit anywhere
+ * else. E.g. webfont loading classes.
+ */
+
+
+
+// Global styles.
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+}
+
+*:first-child {
+  margin-top: 0;
+}
+
+*:last-child {
+  margin-bottom: 0;
+}
+
+
+
+// Document styles.
+body {
+
+  &.wf-loading {
+    opacity: 0;
+  }
+
+  &.wf-active {
+    opacity: 1;
+  }
+
+  &.wf-inactive {
+    opacity: 1;
+  }
+
+}

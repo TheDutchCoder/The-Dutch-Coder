@@ -1,0 +1,143 @@
+/**
+ * _defaults.scss
+ *
+ * Defines all global variables and defaults for this theme.
+ */
+
+
+
+// Colors.
+// 
+// Define custom colors to use throughout this project as a (nested) map.
+// You can define regular colors, or divide them into 'functional' areas.
+$colors: (
+
+  brand: (
+    light: #eee,
+    base: #ddd,
+    dark: #ccc
+  ),
+
+  button: (
+    primary: green,
+    secondary: red,
+    neutral: grey
+  ),
+
+  font: (
+    base: #333
+  ),
+
+  ui: (
+    border: #ccc,
+    required: red,
+    background: #fff
+  ),
+
+  print: (
+    base: #000,
+    ui: #999
+  )
+
+);
+
+
+
+// Global variables.
+// 
+// These are used throughout the project. E.g. 'padding' is by default used in
+// grids, wrappers, etc.
+$padding:   1.5rem;
+$font-size: 16px;
+
+
+
+// Media queries.
+// 
+// Define custom media queries that you can call them by a mapped name in the
+// media query mixin. Will also be used to generate grids.
+// 
+// You can also call a custom media query by providing the actual query.
+// 
+// Example:
+// @include mq(lap) { color: red; }
+// @include mq('screen and (max-width: 20em)') { color: green; }
+$media-queries: (
+  pocket: '',
+  hand:   'screen and (min-width: 33.75em)',  // 540px
+  lap:    'screen and (min-width: 45em)',     // 720px
+  desk:   'screen and (min-width: 67.5em)',   // 1080px
+  wide:   'screen and (min-width: 80em)'      // 1280px
+);
+
+
+
+// Transitions.
+// 
+// Define custom transitions, so you can call them by a mapped name in the
+// transition mixin.
+// 
+// You can also call a custom transition by providing the actual transition.
+// 
+// Example:
+// @include transition(slow, 'color, background-color');
+// @include transition('all 250ms cubic-bezier(.3, .5, .7, .5)');
+$transitions: (
+  slow:   'all 1s cubic-bezier(.8, 0, .5, 1)',
+  normal: 'all .3s cubic-bezier(.8, 0, .5, 1)',
+  fast:   'all .1s cubic-bezier(.8, 0, .5, 1)'
+);
+
+
+
+
+
+// Partials.
+@import 'partials/functions';
+@import 'partials/mixins';
+
+
+
+// Vendor files.
+@import 'vendor/normalize';
+@import 'vendor/boilerplate';
+
+
+
+// Base.
+@import 'base/document';
+@import 'base/typography';
+@import 'base/forms';
+@import 'base/wordpress';
+
+
+
+// Layouts.
+@import 'layouts/grid';
+@import 'layouts/container';
+@import 'layouts/wrapper';
+@import 'layouts/faux-table';
+
+
+
+// Objects.
+@import 'objects/btn';
+@import 'objects/icon';
+@import 'objects/logo';
+@import 'objects/nav';
+
+
+
+// Global elements.
+@import 'global/header';
+@import 'global/footer';
+
+
+
+// Components.
+// @import 'components/example';
+
+
+
+// Print styles.
+@import 'base/print';

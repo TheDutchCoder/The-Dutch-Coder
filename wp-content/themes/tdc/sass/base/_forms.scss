@@ -1,0 +1,35 @@
+/**
+ * _forms.scss
+ * 
+ * Default form styling.
+ */
+
+
+
+// labels.
+label {
+  display: block;
+  cursor: pointer;
+
+  font-weight: 600;
+}
+
+
+
+// Inputs.
+input {
+  padding: .25em .5em;
+
+  border: 1px solid color(ui, border);
+}
+
+input[type=search] {
+  box-sizing: border-box;
+}
+
+
+
+// Helper classes.
+.required {
+  color: color(ui, required);
+}

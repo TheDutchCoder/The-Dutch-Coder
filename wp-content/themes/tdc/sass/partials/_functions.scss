@@ -1,0 +1,35 @@
+/**
+ * _functions.scss
+ *
+ * A collection of functions that help with e.g. calculations.
+ */
+
+
+
+/**
+ * Converts pixels to ems.
+ * 
+ * Requires you to specify the base size if not the default 16px
+ * eg. if you set font-size: em(20), and you want line-height to be 25px, do
+ * line-height: em(25, 20);
+ */
+@function em($px, $base: 16) {
+
+  @return ($px / $base) * 1em;
+
+}
+
+
+
+/**
+ * Gets a color based name and shade.
+ * 
+ * @param  String $name         The name of the color to get.
+ * @param  String $tone: 'base' An optional tone to get.
+ * @return String               The hex value.
+ */
+@function color($name, $tone: 'base') {
+
+  @return map-get(map-get($colors, $name), $tone);
+
+}

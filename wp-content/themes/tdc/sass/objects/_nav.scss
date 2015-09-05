@@ -1,0 +1,64 @@
+/**
+ * _nav.scss
+ * 
+ * Standardized navigation list.
+ *
+ * Can be used on any collection of elements, bu <ul> is recommended in most
+ * cases.
+ */
+
+
+
+.nav {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+  .nav__item {
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+  }
+
+    .nav__link {
+      position: relative;
+      display: block;
+
+      &,
+      &:link,
+      &:visited,
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+
+    }
+
+
+
+// Sub navigation.
+.nav--sub {
+  position: relative;
+
+  @include mq(lap) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+  }
+}
+
+
+
+// Inline navigation.
+.nav--inline {
+
+  .nav__item {
+    width: auto;
+  }
+
+}
